@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>800</width>
+    <height>600</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>MainWindow</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">font: 10pt &quot;Segoe Print&quot;;</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>800</width>
+     <height>29</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuNuevo">
+    <property name="title">
+     <string>Nuevo</string>
+    </property>
+    <addaction name="actionProducto"/>
+    <addaction name="actionEmpleado"/>
+    <addaction name="actionAdministrador"/>
+   </widget>
+   <widget class="QMenu" name="menuVer">
+    <property name="title">
+     <string>Ver</string>
+    </property>
+    <widget class="QMenu" name="menuBuscar_venta">
+     <property name="title">
+      <string>Buscar venta</string>
+     </property>
+     <addaction name="actionPor_numero"/>
+     <addaction name="actionPor_fecha"/>
+    </widget>
+    <widget class="QMenu" name="menuEstadisticas">
+     <property name="title">
+      <string>Estadisticas</string>
+     </property>
+     <widget class="QMenu" name="menuMas_vendidos">
+      <property name="title">
+       <string>Mas vendidos</string>
+      </property>
+      <addaction name="actionTotal"/>
+      <addaction name="actionCategor_a"/>
+     </widget>
+     <addaction name="menuMas_vendidos"/>
+    </widget>
+    <addaction name="actionUltima_Venta"/>
+    <addaction name="menuBuscar_venta"/>
+    <addaction name="menuEstadisticas"/>
+   </widget>
+   <addaction name="menuNuevo"/>
+   <addaction name="menuVer"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionProducto">
+   <property name="text">
+    <string>Producto</string>
+   </property>
+  </action>
+  <action name="actionEmpleado">
+   <property name="text">
+    <string>Empleado</string>
+   </property>
+  </action>
+  <action name="actionAdministrador">
+   <property name="text">
+    <string>Administrador</string>
+   </property>
+  </action>
+  <action name="actionUltima_Venta">
+   <property name="text">
+    <string>Ultima Venta</string>
+   </property>
+  </action>
+  <action name="actionPor_numero">
+   <property name="text">
+    <string>Por numero</string>
+   </property>
+  </action>
+  <action name="actionPor_fecha">
+   <property name="text">
+    <string>Por fecha</string>
+   </property>
+  </action>
+  <action name="actionTotal">
+   <property name="text">
+    <string>Total</string>
+   </property>
+  </action>
+  <action name="actionCategor_a">
+   <property name="text">
+    <string>Categoría</string>
+   </property>
+  </action>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
