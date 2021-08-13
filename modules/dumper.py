@@ -2,7 +2,7 @@ __author__ = "Fuzz"
 
 import pickle
 
-import objectMaker
+from objectMaker import *
 
 def dump_object(object):
     if type(object) is Product:
