@@ -6,7 +6,7 @@ from modules.people import *
 
 
 def dump_object(object_to_dump):
-    if (type(object_to_dump) is Liquid) or (type(object_to_dump) is Solid):
+    if isinstance(object_to_dump, Product):
         if object_to_dump.isFood:
             file_db = 'Data/Food.dat'
             data = open(file_db, 'ab')
@@ -18,7 +18,7 @@ def dump_object(object_to_dump):
             pickle.dump(object_to_dump, data)
             data.close()
 
-    elif type(object_to_dump) is Person:
+    elif isinstance(object_to_dump, Person):
         if type(object_to_dump) is Client:
             file_db = 'Data/Clients.dat'
             data = open(file_db, 'ab')
