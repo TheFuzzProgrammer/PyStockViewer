@@ -55,3 +55,7 @@ class Employed(Person):
     def show(self):
         super(Employed, self).show()
         print("Employed date in: \n", self.dateIn)
+
+
+if __name__ == "__main__":
+    print("Object generator module")

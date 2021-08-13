@@ -33,3 +33,7 @@ def dump_object(object_to_dump):
             pass
     else:
         pass
+
+
+if __name__ == "__main__":
+    print("Object save module")
