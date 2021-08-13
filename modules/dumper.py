@@ -1,8 +1,8 @@
 __author__ = "Fuzz"
 
 import pickle
-
 from objectMaker import *
+from people import *
 
 
 def dump_object(object_to_dump):
