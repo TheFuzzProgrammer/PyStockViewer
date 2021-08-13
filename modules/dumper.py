@@ -6,8 +6,7 @@ from modules.people import *
 
 
 def dump_object(object_to_dump):
-    if type(object_to_dump) is Liquid:
-        print(object_to_dump.isFood)
+    if (type(object_to_dump) is Liquid) or (type(object_to_dump) is Solid):
         if object_to_dump.isFood:
             file_db = 'Data/Food.dat'
             data = open(file_db, 'ab')

@@ -48,13 +48,21 @@ class Client(Person):
 
 
 class Employed(Person):
-    def __init__(self, date_in, surname, nm, doc, d_type, phn, mail):
+    def __init__(self, key, date_in, surname, nm, doc, d_type, phn, mail):
         super().__init__(surname, nm, doc, d_type, phn, mail)
         self.dateIn = date_in
+        self.accessKey = key
 
     def show(self):
         super(Employed, self).show()
         print("Employed date in: \n", self.dateIn)
+
+    def key_change(self, old_key, new_key):
+        if self.accessKey == old_key:
+            self.accessKey = new_key
+            return 1
+        else:
+            return 99
 
 
 if __name__ == "__main__":
