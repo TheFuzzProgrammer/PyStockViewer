@@ -41,7 +41,7 @@
     <property name="currentIndex">
      <number>0</number>
     </property>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="soldTab">
      <attribute name="title">
       <string>Venta</string>
      </attribute>
@@ -87,7 +87,7 @@
        <string>Productos confirmados</string>
       </property>
      </widget>
-     <widget class="QScrollArea" name="scrollArea">
+     <widget class="QScrollArea" name="productList">
       <property name="geometry">
        <rect>
         <x>480</x>
@@ -139,8 +139,104 @@
        <string>Subtotal:</string>
       </property>
      </widget>
+     <widget class="QLineEdit" name="lineEdit">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>260</y>
+        <width>161</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="styleSheet">
+       <string notr="true">font: 10pt &quot;MS Shell Dlg 2&quot; rgb(132, 132, 132);</string>
+      </property>
+      <property name="text">
+       <string>Numero de cliente</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="pushButton">
+      <property name="geometry">
+       <rect>
+        <x>210</x>
+        <y>260</y>
+        <width>101</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Buscar</string>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>220</y>
+        <width>151</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cliente registrado</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_3">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>20</y>
+        <width>151</width>
+        <height>17</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Cliente base</string>
+      </property>
+      <property name="checked">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QDoubleSpinBox" name="discount">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>60</y>
+        <width>62</width>
+        <height>22</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QRadioButton" name="radioButton_2">
+      <property name="geometry">
+       <rect>
+        <x>60</x>
+        <y>60</y>
+        <width>111</width>
+        <height>21</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Descuento %</string>
+      </property>
+     </widget>
     </widget>
-    <widget class="QWidget" name="tab_2">
+    <widget class="QWidget" name="stockTab">
      <attribute name="title">
       <string>Stock</string>
      </attribute>
@@ -192,8 +288,18 @@
     <addaction name="menuBuscar_venta"/>
     <addaction name="menuEstadisticas"/>
    </widget>
+   <widget class="QMenu" name="menuContabilidad">
+    <property name="title">
+     <string>Contabilidad</string>
+    </property>
+    <addaction name="actionModificar_IVA"/>
+    <addaction name="actionEstadistica_de_vendedor"/>
+    <addaction name="actionGanancias_semanales"/>
+    <addaction name="actionReporte_mensual_global"/>
+   </widget>
    <addaction name="menuNuevo"/>
    <addaction name="menuVer"/>
+   <addaction name="menuContabilidad"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
   <action name="actionProducto">
@@ -234,6 +340,26 @@
   <action name="actionCategor_a">
    <property name="text">
     <string>Categoría</string>
+   </property>
+  </action>
+  <action name="actionModificar_IVA">
+   <property name="text">
+    <string>Modificar IVA</string>
+   </property>
+  </action>
+  <action name="actionEstadistica_de_vendedor">
+   <property name="text">
+    <string>Estadistica de vendedor</string>
+   </property>
+  </action>
+  <action name="actionGanancias_semanales">
+   <property name="text">
+    <string>Ganancias semanales</string>
+   </property>
+  </action>
+  <action name="actionReporte_mensual_global">
+   <property name="text">
+    <string>Reporte mensual global</string>
    </property>
   </action>
  </widget>
