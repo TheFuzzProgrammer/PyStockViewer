@@ -1,6 +1,7 @@
 from modules.objectMaker import *
 from modules.dumper import *
 from modules.people import *
+import userInterface
 
 liquid = Liquid(7, 2.5, "pepsi", 2, 10)
 
@@ -18,3 +19,5 @@ dump_object(solid)
 dump_object(employed)
 dump_object(client)
 dump_object(liquid)
+
+userInterface.start_ui()
