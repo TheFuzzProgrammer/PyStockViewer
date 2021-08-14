@@ -206,7 +206,7 @@
        <string>Cliente base</string>
       </property>
       <property name="checked">
-       <bool>false</bool>
+       <bool>true</bool>
       </property>
      </widget>
      <widget class="QDoubleSpinBox" name="discount">
