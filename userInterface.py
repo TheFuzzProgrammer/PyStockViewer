@@ -20,4 +20,4 @@ def start():
 
 
 if __name__ == "__main__":
-    print("This module only can be runned from aplication")
+    print("This module only can run from application")
