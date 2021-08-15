@@ -23,5 +23,5 @@ class Discount(Tax):
         self.reason = reason
 
 
-class 
-
+if __name__ == "__main__":
+    print("Tax module by Fuzz")
