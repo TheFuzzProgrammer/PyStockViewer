@@ -20,4 +20,6 @@ def start():
 
 
 if __name__ == "__main__":
-    print("This module only can run from application")
+    print("GUI FOR StockViewer by Fuzz \nThis module only can run from application")
+else:
+    pass
