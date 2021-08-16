@@ -12,6 +12,7 @@ class Window(QMainWindow):
         self.setWindowTitle("Stock viewer")
 
 
+
 def start():
     app = QApplication(sys.argv)
     _window = Window()
@@ -19,7 +20,4 @@ def start():
     app.exec_()
 
 
-if __name__ == "__main__":
-    print("GUI FOR StockViewer by Fuzz \nThis module only can run from application")
-else:
-    pass
+

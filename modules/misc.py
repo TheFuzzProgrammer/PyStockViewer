@@ -6,7 +6,7 @@ class Tax:
         self.name = name
         self.value = value
         self.active = True
-        
+
     def is_active(self, status):
         self.active = status
 
