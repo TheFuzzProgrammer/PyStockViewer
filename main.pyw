@@ -1,7 +1,5 @@
 __author__ = 'Fuzz'
 
-import userInterface, UserInterface.Main
+import UserInterface.Main
 
-
-#userInterface.start()
 UserInterface.Main.start_ui()
