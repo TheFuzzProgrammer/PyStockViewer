@@ -42,6 +42,7 @@ class CVMain(object):
         self.statusbar = QtWidgets.QStatusBar(mainui)
         self.actionProducto = QtWidgets.QAction(mainui)
         self.actionEmpleado = QtWidgets.QAction(mainui)
+        self.actionCliente = QtWidgets.QAction(mainui)
         self.actionAdministrador = QtWidgets.QAction(mainui)
         self.actionUltima_Venta = QtWidgets.QAction(mainui)
         self.actionPor_numero = QtWidgets.QAction(mainui)
@@ -131,6 +132,7 @@ class CVMain(object):
         self.actionReporte_mensual_global.setObjectName("actionReporte_mensual_global")
         self.menuNuevo.addAction(self.actionProducto)
         self.menuNuevo.addAction(self.actionEmpleado)
+        self.menuNuevo.addAction(self.actionCliente)
         self.menuNuevo.addAction(self.actionAdministrador)
         self.menuBuscar_venta.addAction(self.actionPor_numero)
         self.menuBuscar_venta.addAction(self.actionPor_fecha)
@@ -150,6 +152,7 @@ class CVMain(object):
         self.pushButton.clicked.connect(self.add_client)
         self.translateui(mainui)
         self.tabWidget.setCurrentIndex(0)
+        self.actionCliente.triggered.connect(self.add_client)
         QtCore.QMetaObject.connectSlotsByName(mainui)
 
     def add_client(self):
@@ -180,6 +183,7 @@ class CVMain(object):
         self.menuContabilidad.setTitle(_translate("MainWindow", "Contabilidad"))
         self.actionProducto.setText(_translate("MainWindow", "Producto"))
         self.actionEmpleado.setText(_translate("MainWindow", "Empleado"))
+        self.actionCliente.setText(_translate("MainWindow", "Cliente"))
         self.actionAdministrador.setText(_translate("MainWindow", "Administrador"))
         self.actionUltima_Venta.setText(_translate("MainWindow", "Ultima Venta"))
         self.actionPor_numero.setText(_translate("MainWindow", "Por numero"))
