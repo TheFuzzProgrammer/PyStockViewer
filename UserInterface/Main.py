@@ -53,7 +53,8 @@ class CVMain(object):
         self.actionEstadistica_de_vendedor = QtWidgets.QAction(mainui)
         self.actionGanancias_semanales = QtWidgets.QAction(mainui)
         self.actionReporte_mensual_global = QtWidgets.QAction(mainui)
-        self.opennew = AddClient()
+        self.new_client = AddClient()
+        self.new_employed = AddPartner()
 
     def setupui(self, mainui):
         mainui.setObjectName("MainWindow")
@@ -153,10 +154,14 @@ class CVMain(object):
         self.translateui(mainui)
         self.tabWidget.setCurrentIndex(0)
         self.actionCliente.triggered.connect(self.add_client)
+        self.actionEmpleado.triggered.connect(self.add_employed)
         QtCore.QMetaObject.connectSlotsByName(mainui)
 
+    def add_employed(self):
+        self.new_employed.exec()
+
     def add_client(self):
-        self.opennew.exec()
+        self.new_client.exec()
 
     def translateui(self, mainui):
         _translate = QtCore.QCoreApplication.translate
@@ -200,11 +205,26 @@ class AddClient(QDialog):
     def __init__(self):
         QDialog.__init__(self)
         uic.loadUi('Userinterface/addclient.ui', self)
+        self.setWindowIcon(QtGui.QIcon('media/icon.png'))
         self.aceptar.clicked.connect(self.add_new)
 
     def add_new(self):
         print("Etesech")
         client = Client(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
+                        self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
+        dump_object(client)
+
+
+class AddPartner(QDialog):
+    def __init__(self):
+        QDialog.__init__(self)
+        uic.loadUi('Userinterface/addpartner.ui', self)
+        self.setWindowIcon(QtGui.QIcon('media/icon.png'))
+        self.aceptar.clicked.connect(self.add_new)
+
+    def add_new(self):
+        print("Etesech")
+        client = Employed(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
                         self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
         dump_object(client)
 

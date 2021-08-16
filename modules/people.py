@@ -39,8 +39,8 @@ class Client(Person):
 
     def show(self):
         print("Patient: \n", self.name, self.surname,
-              "\nContact: \n", self.phone, self.email, "\nPatient number: \n", self.clientNumber,
-              "\nTreatment: \n", self.account.show)
+              "\nContact: \n", self.phone, self.email, "\nClient number: \n", self.clientNumber,
+              "\nAccount: \n", self.account.show)
 
     def change_account(self, account):
         self.account = account
