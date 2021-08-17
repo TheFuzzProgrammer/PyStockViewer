@@ -2,15 +2,17 @@ __Author__ = "Fuzz"
 
 from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import *
-from PyQt5 import uic
 from PyQt5 import QtGui
 from modules.objectMaker import *
 from modules.people import *
 from UserInterface.addclient import *
+from UserInterface.addclient import *
+from UserInterface.addproduct import *
 from modules.dumper import *
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5 import QtGui
+import sys
 
 
 class CVMain(object):
@@ -53,8 +55,9 @@ class CVMain(object):
         self.actionEstadistica_de_vendedor = QtWidgets.QAction(mainui)
         self.actionGanancias_semanales = QtWidgets.QAction(mainui)
         self.actionReporte_mensual_global = QtWidgets.QAction(mainui)
-        self.new_client = AddClient()
+        self.client_dialog = runapp_client()
         self.new_employed = AddPartner()
+        self.product_dialog = runapp_product()
 
     def setupui(self, mainui):
         mainui.setObjectName("MainWindow")
@@ -155,13 +158,21 @@ class CVMain(object):
         self.tabWidget.setCurrentIndex(0)
         self.actionCliente.triggered.connect(self.add_client)
         self.actionEmpleado.triggered.connect(self.add_employed)
+        self.actionProducto.triggered.connect(self.add_product)
         QtCore.QMetaObject.connectSlotsByName(mainui)
+
+    def add_product(self):
+        ui = ProductsUi(self.product_dialog)
+        ui.products_ui(self.product_dialog)
+        self.product_dialog.show()
 
     def add_employed(self):
         self.new_employed.exec()
 
     def add_client(self):
-        self.new_client.exec()
+        ui = ClientsUi(self.client_dialog)
+        ui.clients_ui(self.client_dialog)
+        self.client_dialog.show()
 
     def translateui(self, mainui):
         _translate = QtCore.QCoreApplication.translate
@@ -201,20 +212,6 @@ class CVMain(object):
         self.actionReporte_mensual_global.setText(_translate("MainWindow", "Reporte mensual global"))
 
 
-class AddClient(QDialog):
-    def __init__(self):
-        QDialog.__init__(self)
-        uic.loadUi('Userinterface/addclient.ui', self)
-        self.setWindowIcon(QtGui.QIcon('media/icon.png'))
-        self.aceptar.clicked.connect(self.add_new)
-
-    def add_new(self):
-        print("Etesech")
-        client = Client(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
-                        self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
-        dump_object(client)
-
-
 class AddPartner(QDialog):
     def __init__(self):
         QDialog.__init__(self)
@@ -225,18 +222,18 @@ class AddPartner(QDialog):
     def add_new(self):
         print("Etesech")
         client = Employed(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
-                        self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
+                          self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
         dump_object(client)
 
 
 def start_ui():
     import sys
-    app = QtWidgets.QApplication(sys.argv)
+    application = QtWidgets.QApplication(sys.argv)
     mainui = QtWidgets.QMainWindow()
-    ui = CVMain(mainui)
-    ui.setupui(mainui)
+    user_interface = CVMain(mainui)
+    user_interface.setupui(mainui)
     mainui.show()
-    sys.exit(app.exec_())
+    sys.exit(application.exec_())
 
 
 if __name__ == "__main__":
