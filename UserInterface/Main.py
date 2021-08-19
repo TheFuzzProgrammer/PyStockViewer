@@ -1,18 +1,11 @@
 __Author__ = "Fuzz"
 
-from PyQt5 import QtCore, QtWidgets
-from PyQt5.QtWidgets import *
-from PyQt5 import QtGui
-from modules.objectMaker import *
-from modules.people import *
-from UserInterface.addclient import *
 from UserInterface.addclient import *
 from UserInterface.addproduct import *
-from modules.dumper import *
+from UserInterface.addpartner import *
 from PyQt5.QtWidgets import *
 from PyQt5 import uic
 from PyQt5 import QtGui
-import sys
 
 
 class CVMain(object):
@@ -56,7 +49,7 @@ class CVMain(object):
         self.actionGanancias_semanales = QtWidgets.QAction(mainui)
         self.actionReporte_mensual_global = QtWidgets.QAction(mainui)
         self.client_dialog = runapp_client()
-        self.new_employed = AddPartner()
+        self.partner_dialog = runapp_partners()
         self.product_dialog = runapp_product()
 
     def setupui(self, mainui):
@@ -157,22 +150,24 @@ class CVMain(object):
         self.translateui(mainui)
         self.tabWidget.setCurrentIndex(0)
         self.actionCliente.triggered.connect(self.add_client)
-        self.actionEmpleado.triggered.connect(self.add_employed)
+        self.actionEmpleado.triggered.connect(self.add_partner)
         self.actionProducto.triggered.connect(self.add_product)
         QtCore.QMetaObject.connectSlotsByName(mainui)
 
     def add_product(self):
         ui = ProductsUi(self.product_dialog)
         ui.products_ui(self.product_dialog)
-        self.product_dialog.show()
+        self.product_dialog.exec()
 
-    def add_employed(self):
-        self.new_employed.exec()
+    def add_partner(self):
+        user_interface = PartnersUi(self.partner_dialog)
+        user_interface.partners_ui(self.partner_dialog)
+        self.partner_dialog.exec()
 
     def add_client(self):
         ui = ClientsUi(self.client_dialog)
         ui.clients_ui(self.client_dialog)
-        self.client_dialog.show()
+        self.client_dialog.exec()
 
     def translateui(self, mainui):
         _translate = QtCore.QCoreApplication.translate
@@ -217,22 +212,16 @@ class AddPartner(QDialog):
         QDialog.__init__(self)
         uic.loadUi('Userinterface/addpartner.ui', self)
         self.setWindowIcon(QtGui.QIcon('media/icon.png'))
-        self.aceptar.clicked.connect(self.add_new)
 
-    def add_new(self):
-        print("Etesech")
-        client = Employed(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
-                          self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
-        dump_object(client)
 
 
 def start_ui():
     import sys
     application = QtWidgets.QApplication(sys.argv)
-    mainui = QtWidgets.QMainWindow()
-    user_interface = CVMain(mainui)
-    user_interface.setupui(mainui)
-    mainui.show()
+    main_ui = QtWidgets.QMainWindow()
+    user_interface = CVMain(main_ui)
+    user_interface.setupui(main_ui)
+    main_ui.show()
     sys.exit(application.exec_())
 
 

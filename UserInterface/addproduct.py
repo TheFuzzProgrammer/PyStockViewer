@@ -2,6 +2,7 @@ __author__ = "Fuzz"
 
 
 from PyQt5 import QtCore, QtGui, QtWidgets
+from modules.objectMaker import *
 
 
 class ProductsUi(object):
@@ -25,12 +26,14 @@ class ProductsUi(object):
         self.label_8 = QtWidgets.QLabel(dialog)
         self.price = QtWidgets.QLineEdit(dialog)
         self.isToxic = QtWidgets.QCheckBox(dialog)
+        self.liquid = QtWidgets.QCheckBox(dialog)
         self.expires = QtWidgets.QCheckBox(dialog)
         self.isFood = QtWidgets.QCheckBox(dialog)
 
-    def products_ui(self, dialog):
-        dialog.setObjectName("Dialog")
-        dialog.resize(402, 489)
+    def products_ui(self, product_dialog):
+        product_dialog.setWindowIcon(QtGui.QIcon('media/icon.png'))
+        product_dialog.setObjectName("Dialog")
+        product_dialog.resize(402, 489)
         self.label.setGeometry(QtCore.QRect(60, 60, 81, 21))
         self.label.setStyleSheet("font: 14pt \"Tempus Sans ITC\";")
         self.label.setObjectName("label")
@@ -80,18 +83,21 @@ class ProductsUi(object):
         self.isToxic.setGeometry(QtCore.QRect(60, 350, 161, 16))
         self.isToxic.setStyleSheet("font: 14pt \"Tempus Sans ITC\";\n""")
         self.isToxic.setObjectName("isToxic")
+        self.liquid.setGeometry(QtCore.QRect(60, 380, 111, 17))
+        self.liquid.setStyleSheet("font: 14pt \"Tempus Sans ITC\";\n""")
+        self.liquid.setObjectName("liquid")
         self.expires.setGeometry(QtCore.QRect(60, 130, 70, 17))
         self.expires.setStyleSheet("font: 14pt \"Tempus Sans ITC\";")
         self.expires.setObjectName("expires")
         self.isFood.setGeometry(QtCore.QRect(230, 350, 121, 16))
         self.isFood.setStyleSheet("font: 14pt \"Tempus Sans ITC\";")
         self.isFood.setObjectName("isFood")
-        self.retranslateui(dialog)
-        QtCore.QMetaObject.connectSlotsByName(dialog)
+        self.retranslateui(product_dialog)
+        QtCore.QMetaObject.connectSlotsByName(product_dialog)
 
-    def retranslateui(self, dialog):
+    def retranslateui(self, product_dialog):
         _translate = QtCore.QCoreApplication.translate
-        dialog.setWindowTitle(_translate("Dialog", "Agregar producto"))
+        product_dialog.setWindowTitle(_translate("Dialog", "Agregar producto"))
         self.label.setText(_translate("Dialog", "Nombre:"))
         self.label_2.setText(_translate("Dialog", "Marca:"))
         self.label_3.setText(_translate("Dialog", "Vencimiento:"))
@@ -103,8 +109,12 @@ class ProductsUi(object):
         self.label_7.setText(_translate("Dialog", "Precio"))
         self.label_8.setText(_translate("Dialog", "Codigo:"))
         self.isToxic.setText(_translate("Dialog", "Es toxico"))
+        self.liquid.setText(_translate("Dialog", "Es liquido"))
         self.expires.setText(_translate("Dialog", "Expira"))
         self.isFood.setText(_translate("Dialog", "Es comida"))
+
+    def add_new(self):
+        pass
 
 
 def runapp_product():
@@ -115,6 +125,6 @@ def runapp_product():
 
 
 if __name__ == "__main__":
-    print("Product add module by Fuzz\nThis module only can run from application")
+    print("Product add GUI FOR StockViewer module by Fuzz\nThis module only can run from application")
 else:
     pass

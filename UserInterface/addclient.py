@@ -3,31 +3,32 @@ __author__ = "Fuzz"
 from PyQt5 import QtCore
 from PyQt5 import QtGui
 from PyQt5 import QtWidgets
-import sys
+from modules.dumper import *
 
 
 class ClientsUi(object):
-    def __init__(self, dialog):
-        self.label = QtWidgets.QLabel(dialog)
-        self.label_2 = QtWidgets.QLabel(dialog)
-        self.label_3 = QtWidgets.QLabel(dialog)
-        self.label_4 = QtWidgets.QLabel(dialog)
-        self.label_5 = QtWidgets.QLabel(dialog)
-        self.label_6 = QtWidgets.QLabel(dialog)
-        self.clientName = QtWidgets.QLineEdit(dialog)
-        self.clientSurname = QtWidgets.QLineEdit(dialog)
-        self.docType = QtWidgets.QLineEdit(dialog)
-        self.docNum = QtWidgets.QLineEdit(dialog)
-        self.phoneNum = QtWidgets.QLineEdit(dialog)
-        self.mailAddress = QtWidgets.QLineEdit(dialog)
-        self.aceptar = QtWidgets.QPushButton(dialog)
-        self.cancelar = QtWidgets.QPushButton(dialog)
-        self.descuento = QtWidgets.QCheckBox(dialog)
-        self.agregaDescuento = QtWidgets.QPushButton(dialog)
+    def __init__(self, clients_dialog):
+        self.label = QtWidgets.QLabel(clients_dialog)
+        self.label_2 = QtWidgets.QLabel(clients_dialog)
+        self.label_3 = QtWidgets.QLabel(clients_dialog)
+        self.label_4 = QtWidgets.QLabel(clients_dialog)
+        self.label_5 = QtWidgets.QLabel(clients_dialog)
+        self.label_6 = QtWidgets.QLabel(clients_dialog)
+        self.clientName = QtWidgets.QLineEdit(clients_dialog)
+        self.clientSurname = QtWidgets.QLineEdit(clients_dialog)
+        self.docType = QtWidgets.QLineEdit(clients_dialog)
+        self.docNum = QtWidgets.QLineEdit(clients_dialog)
+        self.phoneNum = QtWidgets.QLineEdit(clients_dialog)
+        self.mailAddress = QtWidgets.QLineEdit(clients_dialog)
+        self.aceptar = QtWidgets.QPushButton(clients_dialog)
+        self.cancelar = QtWidgets.QPushButton(clients_dialog)
+        self.descuento = QtWidgets.QCheckBox(clients_dialog)
+        self.agregaDescuento = QtWidgets.QPushButton(clients_dialog)
 
-    def clients_ui(self, dialog):
-        dialog.setObjectName("Dialog")
-        dialog.resize(400, 489)
+    def clients_ui(self, clients_dialog):
+        clients_dialog.setWindowIcon(QtGui.QIcon('media/icon.png'))
+        clients_dialog.setObjectName("Dialog")
+        clients_dialog.resize(400, 489)
         self.label.setGeometry(QtCore.QRect(60, 70, 81, 21))
         self.label.setStyleSheet("font: 14pt \"Tempus Sans ITC\";")
         self.label.setObjectName("label")
@@ -70,13 +71,19 @@ class ClientsUi(object):
         self.agregaDescuento.setEnabled(False)
         self.agregaDescuento.setGeometry(QtCore.QRect(140, 370, 111, 23))
         self.agregaDescuento.setObjectName("agregaDescuento")
+        self.retranslateui(clients_dialog)
+        QtCore.QMetaObject.connectSlotsByName(clients_dialog)
+        self.aceptar.clicked.connect(self.add_new)
 
-        self.retranslateui(dialog)
-        QtCore.QMetaObject.connectSlotsByName(dialog)
+    def add_new(self):
+        print("elpepe")
+        client = Client(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
+                        self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
+        dump_object(client)
 
-    def retranslateui(self, dialog):
+    def retranslateui(self, clients_dialog):
         _translate = QtCore.QCoreApplication.translate
-        dialog.setWindowTitle(_translate("Dialog", "Agregar cliente"))
+        clients_dialog.setWindowTitle(_translate("Dialog", "Agregar cliente"))
         self.label.setText(_translate("Dialog", "Nombre:"))
         self.label_2.setText(_translate("Dialog", "Apellido:"))
         self.label_3.setText(_translate("Dialog", "Tipo doc:"))
@@ -90,15 +97,13 @@ class ClientsUi(object):
 
 
 def runapp_client():
-    dialog = QtWidgets.QDialog()
-    ui = ClientsUi(dialog)
-    ui.clients_ui(dialog)
-    return dialog
+    clients_dialog = QtWidgets.QDialog()
+    user_interface = ClientsUi(clients_dialog)
+    user_interface.clients_ui(clients_dialog)
+    return clients_dialog
+
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication(sys.argv)
-    dialog = QtWidgets.QDialog()
-    ui = ClientsUi(dialog)
-    ui.clients_ui(dialog)
-    dialog.show()
-    sys.exit(app.exec_())
+    print("Clients add GUI FOR StockViewer by Fuzz \nThis module only can run from application")
+else:
+    pass
