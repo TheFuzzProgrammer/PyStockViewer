@@ -1,6 +1,5 @@
 __author__ = "Fuzz"
 
-
 from PyQt5 import QtCore, QtGui, QtWidgets
 from modules.objectMaker import *
 

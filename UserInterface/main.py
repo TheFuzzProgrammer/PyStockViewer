@@ -3,8 +3,6 @@ __Author__ = "Fuzz"
 from UserInterface.addclient import *
 from UserInterface.addproduct import *
 from UserInterface.addpartner import *
-from PyQt5.QtWidgets import *
-from PyQt5 import uic
 from PyQt5 import QtGui
 
 
@@ -205,14 +203,6 @@ class CVMain(object):
         self.actionEstadistica_de_vendedor.setText(_translate("MainWindow", "Estadistica de vendedor"))
         self.actionGanancias_semanales.setText(_translate("MainWindow", "Ganancias semanales"))
         self.actionReporte_mensual_global.setText(_translate("MainWindow", "Reporte mensual global"))
-
-
-class AddPartner(QDialog):
-    def __init__(self):
-        QDialog.__init__(self)
-        uic.loadUi('Userinterface/addpartner.ui', self)
-        self.setWindowIcon(QtGui.QIcon('media/icon.png'))
-
 
 
 def start_ui():
