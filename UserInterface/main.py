@@ -201,6 +201,10 @@ class CVMain(object):
                     pass
                 else:
                     self.client = get_object(self.lineEdit.text(), "Client")
+                    if self.client is None:
+                        self.nameLabel.setText("No se encontró el cliente")
+                    else:
+                        self.nameLabel.setText("")
                     pass
 
     def is_client(self):
