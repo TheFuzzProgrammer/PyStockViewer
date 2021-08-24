@@ -76,7 +76,6 @@ class ClientsUi(object):
         self.aceptar.clicked.connect(self.add_new)
 
     def add_new(self):
-        print("elpepe")
         client = Client(0, 0, self.clientSurname.text(), self.clientName.text(), self.docType.text(),
                         self.docNum.text(), self.phoneNum.text(), self.mailAddress.text())
         dump_object(client)

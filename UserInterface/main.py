@@ -49,10 +49,15 @@ class CVMain(object):
         self.client_dialog = runapp_client()
         self.partner_dialog = runapp_partners()
         self.product_dialog = runapp_product()
+        self.client_cleared = False
+        self.nameLabel = QtWidgets.QLabel(self.soldTab)
+        self.sale = []
+        self.client = None
 
     def setupui(self, mainui):
         mainui.setObjectName("MainWindow")
         mainui.resize(800, 600)
+        mainui.setMinimumSize(QtCore.QSize(800, 600))
         mainui.setMaximumSize(QtCore.QSize(800, 600))
         mainui.setBaseSize(QtCore.QSize(800, 600))
         mainui.setStyleSheet("font: 10pt \"Segoe Print\";")
@@ -78,11 +83,15 @@ class CVMain(object):
         self.label_2.setObjectName("label_2")
         self.label_3.setGeometry(QtCore.QRect(480, 390, 71, 16))
         self.label_3.setObjectName("label_3")
+        self.nameLabel.setGeometry(QtCore.QRect(40, 282, 300, 21))
+        self.nameLabel.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" color:rgb(255, 0, 0);")
+        self.nameLabel.setStyleSheet("color: rgb(255, 0, 0);")
+        self.nameLabel.setObjectName("nameLabel")
         self.lineEdit.setEnabled(False)
         self.lineEdit.setGeometry(QtCore.QRect(40, 260, 161, 21))
         self.lineEdit.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" rgb(132, 132, 132);")
         self.lineEdit.setObjectName("lineEdit")
-        self.pushButton.setEnabled(True)
+        self.pushButton.setEnabled(False)
         self.pushButton.setGeometry(QtCore.QRect(210, 260, 101, 21))
         self.pushButton.setObjectName("pushButton")
         self.radioButton.setEnabled(True)
@@ -144,13 +153,67 @@ class CVMain(object):
         self.menubar.addAction(self.menuNuevo.menuAction())
         self.menubar.addAction(self.menuVer.menuAction())
         self.menubar.addAction(self.menuContabilidad.menuAction())
-        self.pushButton.clicked.connect(self.add_client)
+        self.pushButton.clicked.connect(self.search_client)
         self.translateui(mainui)
         self.tabWidget.setCurrentIndex(0)
         self.actionCliente.triggered.connect(self.add_client)
         self.actionEmpleado.triggered.connect(self.add_partner)
         self.actionProducto.triggered.connect(self.add_product)
         QtCore.QMetaObject.connectSlotsByName(mainui)
+        self.radioButton.clicked.connect(self.is_client)
+        self.radioButton_3.clicked.connect(self.not_client)
+        self.radioButton_2.clicked.connect(self.has_discount)
+        self.lineEdit.textEdited.connect(self.clear_client)
+        self.sold.clicked.connect(self.new_sale)
+
+    def new_sale(self):
+        if self.radioButton_3.isChecked():
+            print("CommonClient, no discount")
+        elif self.radioButton_2.isChecked():
+            print("CommonClient with discount")
+        elif self.radioButton.isChecked():
+            print("RegisteredClient")
+        else:
+            pass
+
+    def clear_client(self):
+        if not self.client_cleared:
+            self.lineEdit.setText("")
+            self.pushButton.setEnabled(True)
+            self.client_cleared = True
+        else:
+            pass
+
+    def has_discount(self):
+        self.discount.setEnabled(True)
+
+    def search_client(self):
+        client_number = None
+        if self.lineEdit.text() == "":
+            self.nameLabel.setText("Campo vacio!")
+        else:
+            try:
+                client_number = int(self.lineEdit.text())
+            except ValueError:
+                self.nameLabel.setText("Campo erroneo, debe ser numero!!!")
+            finally:
+                if client_number is None:
+                    pass
+                else:
+                    self.client = get_object(self.lineEdit.text(), "Client")
+                    pass
+
+    def is_client(self):
+        self.radioButton_2.setEnabled(False)
+        self.lineEdit.setEnabled(True)
+        self.discount.setEnabled(False)
+        self.client_cleared = False
+        self.lineEdit.setText("Numero de cliente")
+
+    def not_client(self):
+        self.lineEdit.setEnabled(False)
+        self.pushButton.setEnabled(False)
+        self.radioButton_2.setEnabled(True)
 
     def add_product(self):
         ui = ProductsUi(self.product_dialog)

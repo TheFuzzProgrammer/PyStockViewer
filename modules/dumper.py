@@ -36,5 +36,28 @@ def dump_object(object_to_dump):
         pass
 
 
+def get_object(object_search, type_search):
+    file_db = 'Data/Clients.dat'
+    p = open(file_db, 'rb')
+    vec = []
+    result = None
+    condition = True
+    while condition:
+        try:
+            vec.append(pickle.load(p))
+        except EOFError:  # End of file error
+            condition = False
+        finally:
+            pass
+    if not condition:
+        for x in range(0, len(vec)):
+            if type_search == "Client":
+                if vec[x].doc_type == object_search:
+                    result = vec[x]
+                else:
+                    pass
+    return result
+
+
 if __name__ == "__main__":
     print("Object save module")

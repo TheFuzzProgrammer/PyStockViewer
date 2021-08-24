@@ -91,5 +91,18 @@ class Solid(Product):
         self.quantity = quantity
 
 
+class Sale:
+    def __init__(self, product_list, client):
+        self.products = product_list
+        self.total = self.calculate_total()
+        self.client = client
+
+    def calculate_total(self):
+        total = 0
+        for i in range(0, (len(self.products))):
+            total += self.products[i].price
+        return total
+
+
 if __name__ == "__main__":
     print("Object generator module")

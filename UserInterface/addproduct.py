@@ -6,6 +6,7 @@ from modules.objectMaker import *
 
 class ProductsUi(object):
     def __init__(self, dialog):
+        self.dialog = dialog
         self.label = QtWidgets.QLabel(dialog)
         self.label_2 = QtWidgets.QLabel(dialog)
         self.label_3 = QtWidgets.QLabel(dialog)
@@ -113,7 +114,9 @@ class ProductsUi(object):
         self.isFood.setText(_translate("Dialog", "Es comida"))
 
     def add_new(self):
-        pass
+        if self.isFood.isChecked():
+
+            pass
 
 
 def runapp_product():

@@ -32,10 +32,11 @@ class Person:
 
 
 class Client(Person):
-    def __init__(self, number, account, surname, nm, doc, d_type, phn, mail):
+    def __init__(self, number, account, surname, nm, d_type, doc, phn, mail):
         super().__init__(surname, nm, doc, d_type, phn, mail)
         self.clientNumber = number
         self.account = account
+        self.taxes = []
 
     def show(self):
         print("Patient: \n", self.name, self.surname,
@@ -45,6 +46,9 @@ class Client(Person):
     def change_account(self, account):
         self.account = account
         return 0
+
+    def add_tax(self, tax):
+        self.taxes.append(tax)
 
 
 class Employed(Person):
