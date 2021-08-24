@@ -1,6 +1,6 @@
-![imgtest](https://raw.githubusercontent.com/parzibyte/WaterPy/master/assets/ImagenV1.png)
+![imgtest](https://images.unsplash.com/photo-1515879218367-8466d910aaa4?ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8cHl0aG9uJTIwY29kZXxlbnwwfHwwfHw%3D&ixlib=rb-1.2.1&w=1000&q=80)
 # StockViewer
  Stock and sales control
- A 100% python made system for controll stock in your own business
+ <br>A 100% python made system for controll stock in your own business
  
  fuzz & n1ck
