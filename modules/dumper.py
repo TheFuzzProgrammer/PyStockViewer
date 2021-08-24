@@ -56,6 +56,16 @@ def get_object(object_search, type_search):
                     result = vec[x]
                 else:
                     pass
+            elif type_search == "Partner":
+                if vec[x].doc_type == object_search:
+                    result = vec[x]
+                else:
+                    pass
+            elif type_search == "Product":
+                if vec[x].codeProduct == object_search:
+                    result = vec[x]
+                else:
+                    pass
     return result
 
 
