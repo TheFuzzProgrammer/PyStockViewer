@@ -46,6 +46,7 @@ class CVMain(object):
         self.actionEstadistica_de_vendedor = QtWidgets.QAction(mainui)
         self.actionGanancias_semanales = QtWidgets.QAction(mainui)
         self.actionReporte_mensual_global = QtWidgets.QAction(mainui)
+        self.showClient = QtWidgets.QLabel(self.soldTab)
         self.client_dialog = runapp_client()
         self.partner_dialog = runapp_partners()
         self.product_dialog = runapp_product()
@@ -87,6 +88,10 @@ class CVMain(object):
         self.nameLabel.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" color:rgb(255, 0, 0);")
         self.nameLabel.setStyleSheet("color: rgb(255, 0, 0);")
         self.nameLabel.setObjectName("nameLabel")
+        self.showClient.setGeometry(QtCore.QRect(10, 300, 441, 181))
+        self.showClient.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" color:rgb(255, 0, 0);")
+        self.showClient.setStyleSheet("color: rgb(84, 135, 255);")
+        self.showClient.setObjectName("showClient")
         self.lineEdit.setEnabled(False)
         self.lineEdit.setGeometry(QtCore.QRect(40, 260, 161, 21))
         self.lineEdit.setStyleSheet("font: 10pt \"MS Shell Dlg 2\" rgb(132, 132, 132);")
@@ -181,6 +186,7 @@ class CVMain(object):
             self.lineEdit.setText("")
             self.pushButton.setEnabled(True)
             self.client_cleared = True
+            self.client = None
         else:
             pass
 
@@ -189,6 +195,7 @@ class CVMain(object):
 
     def search_client(self):
         client_number = None
+        self.showClient.setText(" ")
         if self.lineEdit.text() == "":
             self.nameLabel.setText("Campo vacio!")
         else:
@@ -205,6 +212,7 @@ class CVMain(object):
                         self.nameLabel.setText("No se encontró el cliente")
                     else:
                         self.nameLabel.setText("")
+                        self.showClient.setText(self.client.show())
                     pass
 
     def is_client(self):
@@ -215,9 +223,13 @@ class CVMain(object):
         self.lineEdit.setText("Numero de cliente")
 
     def not_client(self):
+        self.showClient.setText(" ")
         self.lineEdit.setEnabled(False)
         self.pushButton.setEnabled(False)
         self.radioButton_2.setEnabled(True)
+        self.clear_client()
+        self.nameLabel.setText("  ")
+        self.lineEdit.setText("Cliente común")
 
     def add_product(self):
         ui = ProductsUi(self.product_dialog)

@@ -27,8 +27,8 @@ class Person:
         return 0
 
     def show(self):
-        print("Name: \n", self.name, self.surname, "\nDocument: \n", self.document,
-              "\nContact: \n", self.phone, self.email)
+        return ("Name: \n", self.name, self.surname, "\nDocument: \n", self.document,
+                "\nContact: \n", self.phone, self.email)
 
 
 class Client(Person):
@@ -39,9 +39,9 @@ class Client(Person):
         self.taxes = []
 
     def show(self):
-        print("Patient: \n", self.name, self.surname,
-              "\nContact: \n", self.phone, self.email, "\nClient number: \n", self.clientNumber,
-              "\nAccount: \n", self.account.show)
+        return ("Cliente: \n" + str(self.name) + str(self.surname) +
+                "\nContacto: \n" + str(self.phone) + " " + str(self.email) + "\nNumero de cliente: \n" +
+                str(self.doc_type) + "\nCuenta: \n" + str(self.account))
 
     def change_account(self, account):
         self.account = account
