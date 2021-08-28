@@ -55,11 +55,19 @@ class Employed(Person):
     def __init__(self, key, date_in, surname, nm, doc, d_type, phn, mail):
         super().__init__(surname, nm, doc, d_type, phn, mail)
         self.dateIn = date_in
+        self.number = int
         self.accessKey = key
+        self.is_admin = False
 
     def show(self):
         super(Employed, self).show()
         print("Employed date in: \n", self.dateIn)
+
+    def set_as_admin(self):
+        self.is_admin = True
+
+    def set_number(self, number):
+        self.number = number
 
     def key_change(self, old_key, new_key):
         if self.accessKey == old_key:

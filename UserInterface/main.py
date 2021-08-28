@@ -1,8 +1,10 @@
 __Author__ = "Fuzz"
 
+from UserInterface.setadmin import *
 from UserInterface.addclient import *
 from UserInterface.addproduct import *
 from UserInterface.addpartner import *
+from modules import Qtmods
 from PyQt5 import QtGui
 
 
@@ -18,7 +20,7 @@ class CVMain(object):
         self.scrollAreaWidgetContents = QtWidgets.QWidget()
         self.label_3 = QtWidgets.QLabel(self.soldTab)
         self.label_2 = QtWidgets.QLabel(self.soldTab)
-        self.lineEdit = QtWidgets.QLineEdit(self.soldTab)
+        self.lineEdit = Qtmods.LineEdit(self.soldTab)
         self.pushButton = QtWidgets.QPushButton(self.soldTab)
         self.radioButton = QtWidgets.QRadioButton(self.soldTab)
         self.radioButton_3 = QtWidgets.QRadioButton(self.soldTab)
@@ -50,6 +52,7 @@ class CVMain(object):
         self.client_dialog = runapp_client()
         self.partner_dialog = runapp_partners()
         self.product_dialog = runapp_product()
+        self.set_admin = run_set_admin()
         self.client_cleared = False
         self.nameLabel = QtWidgets.QLabel(self.soldTab)
         self.sale = []
@@ -161,6 +164,7 @@ class CVMain(object):
         self.pushButton.clicked.connect(self.search_client)
         self.translateui(mainui)
         self.tabWidget.setCurrentIndex(0)
+        self.actionAdministrador.triggered.connect(self.set_partner_adimin)
         self.actionCliente.triggered.connect(self.add_client)
         self.actionEmpleado.triggered.connect(self.add_partner)
         self.actionProducto.triggered.connect(self.add_product)
@@ -242,9 +246,14 @@ class CVMain(object):
         self.partner_dialog.exec()
 
     def add_client(self):
-        ui = ClientsUi(self.client_dialog)
-        ui.clients_ui(self.client_dialog)
+        user_interface = ClientsUi(self.client_dialog)
+        user_interface.clients_ui(self.client_dialog)
         self.client_dialog.exec()
+
+    def set_partner_adimin(self):
+        user_interface = SetAdmin(self.client_dialog)
+        user_interface.set_ui(self.client_dialog)
+        self.set_admin.exec()
 
     def translateui(self, mainui):
         _translate = QtCore.QCoreApplication.translate
@@ -284,9 +293,10 @@ class CVMain(object):
         self.actionReporte_mensual_global.setText(_translate("MainWindow", "Reporte mensual global"))
 
 
-def start_ui():
+def start_ui(style):
     import sys
     application = QtWidgets.QApplication(sys.argv)
+    application.setStyleSheet(style)
     main_ui = QtWidgets.QMainWindow()
     user_interface = CVMain(main_ui)
     user_interface.setupui(main_ui)
