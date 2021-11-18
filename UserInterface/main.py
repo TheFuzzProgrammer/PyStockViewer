@@ -206,14 +206,14 @@ class CVMain(object):
             try:
                 client_number = int(self.lineEdit.text())
             except ValueError:
-                self.nameLabel.setText("Campo erroneo, debe ser numero!!!")
+                self.nameLabel.setText("Wrong, must be a number!!!")
             finally:
                 if client_number is None:
                     pass
                 else:
                     self.client = get_object(self.lineEdit.text(), "Client")
                     if self.client is None:
-                        self.nameLabel.setText("No se encontró el cliente")
+                        self.nameLabel.setText("Client not found")
                     else:
                         self.nameLabel.setText("")
                         self.showClient.setText(self.client.show())

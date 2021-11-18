@@ -39,9 +39,9 @@ class Client(Person):
         self.taxes = []
 
     def show(self):
-        return ("Cliente: \n" + str(self.name) + str(self.surname) +
-                "\nContacto: \n" + str(self.phone) + " " + str(self.email) + "\nNumero de cliente: \n" +
-                str(self.doc_type) + "\nCuenta: \n" + str(self.account))
+        return ("Clien: \n" + str(self.name) + str(self.surname) +
+                "\nContact: \n" + str(self.phone) + " " + str(self.email) + "\nNumber of client: \n" +
+                str(self.doc_type) + "\nAccount: \n" + str(self.account))
 
     def change_account(self, account):
         self.account = account

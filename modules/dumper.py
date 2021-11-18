@@ -1,7 +1,9 @@
 __author__ = "Fuzz"
 
 import pickle
+
 from modules.objectMaker import *
+
 from modules.people import *
 
 
@@ -67,6 +69,10 @@ def get_object(object_search, type_search):
                 else:
                     pass
     return result
+
+
+def func():
+    return Product("a", "b", "c", "d")
 
 
 if __name__ == "__main__":

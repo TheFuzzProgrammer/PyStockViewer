@@ -2,5 +2,8 @@
 # StockViewer
  Stock and sales control
  <br>A 100% python made system for controll stock in your own business
- 
- fuzz & n1ck
+
+NOTICE: CODE HAS BEEN REWRITTEN ON C++ 
+AND UNTIL IT'S FINISHED, IS AN PRIVATE REPO, ASK 4 IT IF YOU NEED
+
+Fuzz & n1ck
